@@ -1,6 +1,8 @@
 let { Product, Code, Features, User } = require('../models/index')
 const bcrypt = require('bcryptjs')
-const { Op } = require("sequelize")
+const { Op, where } = require("sequelize")
+const { total } = require("../helpers/helper")
+const qrCode = require('qrcode');
 
 class Controller {
     static async getProduct(req, res) {
@@ -11,8 +13,11 @@ class Controller {
                 include: {
                     model: User,
                     attributes: ['email']
-                }
+                },
+                order: [['name', 'ASC']]
             })
+
+
 
 
 
@@ -67,11 +72,11 @@ class Controller {
 
 
             let dataUser = await User.findAll({
-                attributes: ['email']
+                attributes: ['id']
             })
 
             let data = await Product.create({
-                name, price, type, stock, image, UserId: dataUser[0].email
+                name, price, type, stock, image, UserId: dataUser[0].id
             })
             let code;
 
@@ -83,7 +88,7 @@ class Controller {
                 code = "003"
             } else if (type === "Earphone") {
                 code = "004"
-            } else if (type === "Smartwatch") {
+            } else if (type === "SmartWatch") {
                 code = "005"
             }
 
@@ -198,8 +203,13 @@ class Controller {
         try {
             let { id } = req.params;
             let data = await Product.findByPk(id, {
-                include: [Code]
+                include: [
+                    Code,
+                    Features
+                ]
             });
+            console.log(data);
+
             if (!data) {
                 throw new Error("Product not found");
             }
@@ -227,9 +237,76 @@ class Controller {
             })
             res.redirect('/product?productDelete=' + dataProduct.name)
         } catch (error) {
-            console.log(error);
-
             res.send(error)
+        }
+    }
+
+    static async renderBuyProduct(req, res) {
+        try {
+            let { id } = req.params
+            let data = await Product.findByPk(id)
+            res.render('buyProduct', { data, total })
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async qrCode(req, res) {
+        try {
+            let { id } = req.params
+
+            await Product.decrement('stock', {
+                by: 1, where: {
+                    id: id
+                }
+            })
+
+            let data = await Code.findAll({
+                where: {
+                    ProductId: id
+                }
+            })
+            let url = data[0].serialCode
+
+            const qrUrl = await qrCode.toDataURL(url);
+            res.render('qrCode', { qrUrl })
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async updateProductPage(req, res) {
+        try {
+            const { id } = req.params;
+            let product = await Product.findByPk(id);
+            res.render('updateProduct', { product });
+        } catch (error) {
+            res.send(error);
+        }
+    }
+
+    static async updateProductHandler(req, res) {
+        try {
+            const { id } = req.params;
+            const { name, price, type, stock, image } = req.body;
+
+            let data = await Product.update(
+                { name, price, type, stock, image },
+                { where: { id } }
+
+            )
+
+            res.redirect('/product');
+
+        } catch (error) {
+            if (error.name === 'SequelizeValidationError') {
+                const errors = error.errors.map(e => e.message);
+                return res.render('updateProduct', { product: req.body, errors });
+            } else {
+                console.log(error);
+
+                res.send(error);
+            }
         }
     }
 

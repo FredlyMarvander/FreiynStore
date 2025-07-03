@@ -1,0 +1,77 @@
+[
+    {
+        "id": 1,
+        "name": "5G Connectivity",
+        "description": "Supports next-gen 5G mobile networks"
+    },
+    {
+        "id": 2,
+        "name": "High Refresh Rate",
+        "description": "Smooth 120Hz or higher display"
+    },
+    {
+        "id": 3,
+        "name": "Advanced Camera",
+        "description": "Pro-grade triple camera system"
+    },
+    {
+        "id": 4,
+        "name": "High Performance",
+        "description": "Powered by latest generation CPU"
+    },
+    {
+        "id": 5,
+        "name": "Lightweight",
+        "description": "Portable design for mobility"
+    },
+    {
+        "id": 6,
+        "name": "Long Battery Life",
+        "description": "Up to 15 hours of battery backup"
+    },
+    {
+        "id": 7,
+        "name": "Fast Charging",
+        "description": "Supports fast charging protocols"
+    },
+    {
+        "id": 8,
+        "name": "High Capacity",
+        "description": "20,000mAh or more capacity"
+    },
+    {
+        "id": 9,
+        "name": "Multi-Port",
+        "description": "Charge multiple devices simultaneously"
+    },
+    {
+        "id": 10,
+        "name": "Noise Cancellation",
+        "description": "Active Noise Cancelling (ANC) support"
+    },
+    {
+        "id": 11,
+        "name": "Long Battery",
+        "description": "Playback up to 8 hours or more"
+    },
+    {
+        "id": 12,
+        "name": "Touch Control",
+        "description": "Intuitive touch-based controls"
+    },
+    {
+        "id": 13,
+        "name": "Health Tracking",
+        "description": "Heart rate, sleep, and activity tracking"
+    },
+    {
+        "id": 14,
+        "name": "Water Resistant",
+        "description": "Rated for swimming and rain"
+    },
+    {
+        "id": 15,
+        "name": "Notification Sync",
+        "description": "Receive calls and messages notifications"
+    }
+]

@@ -23,14 +23,13 @@ const isAdmin = function (req, res, next) {
 }
 
 router.get('/', Controller.getProduct) // 
-router.get('/buy/:id', isLogin, Controller.buyProduct)
+router.get('/buy/:id', isLogin, Controller.renderBuyProduct)
 router.get('/sell', isLogin, isAdmin, Controller.renderAddProduct)
 router.post('/sell', Controller.addProductHandler)
 router.get('/detail/:id', Controller.productDetail)
-// router.get('/update/:id', isLogin, isAdmin, Controller.renderUpdateProduct)
-// router.post('/update/:id', Controller.updateProductHandler)
-// router.get('/update/:id', isLogin, isAdmin, Controller.renderUpdateProduct)
-// router.post('/update/:id', Controller.updateProductHandler)
+router.get('/qrcode/:id', Controller.qrCode)
+router.get('/update/:id', isLogin, isAdmin, Controller.updateProductPage)
+router.post('/update/:id', Controller.updateProductHandler)
 router.get('/delete/:id', isLogin, isAdmin, Controller.deleteProduct)
 
 module.exports = router
