@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Freiyn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@100;300;400;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #212121;
+            --bg: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: "poppins", sans-serif;
+            background-color: var(--bg);
+            color: #2D3748;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.4rem 7%;
+            border-bottom: 1px solid var(--primary);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+        }
+
+        .navbar-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .navbar .navbar-logo {
+            font-family: "Parifico", cursive;
+            font-style: italic;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .navbar .navbar-logo span {
+            color: var(--primary);
+        }
+
+        .navbar .navbar-nav a {
+            text-align: center;
+            color: white;
+            display: inline-block;
+            font-size: 1.3rem;
+            margin: 0 1rem;
+        }
+
+        .navbar .navbar-nav a:hover {
+            color: var(--primary);
+        }
+
+        .navbar .navbar-nav a::after {
+            content: "";
+            display: block;
+            padding-bottom: 0.5rem;
+            border-bottom: 0.1rem solid var(--primary);
+            transform: scaleX(0);
+            transition: 0.2s linear;
+        }
+
+        .navbar .navbar-nav a:hover::after {
+            transform: scaleX(0.5);
+        }
+
+        .navbar .navbar-extra a {
+            color: white;
+            margin: 0 0.5rem;
+        }
+
+        .navbar .navbar-extra a:hover {
+            color: var(--primary);
+        }
+
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            background-image: url(https://img.freepik.com/premium-photo/flat-lay-black-tech-gadgets-accessories-black-background_14117-1193878.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 25%;
+            bottom: 0;
+            background: linear-gradient(0deg,
+                    rgba(1, 1, 3, 1) 8%,
+                    rgba(255, 255, 255, 0) 50%);
+        }
+
+        .hero .content {
+            padding: 1.4rem 7%;
+            max-width: 60rem;
+        }
+
+        .hero .content h1 {
+            font-size: 5em;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+            line-height: 1.2;
+        }
+
+        .hero .content h1 span {
+            color: var(--primary);
+        }
+
+        .hero .content p {
+            font-size: 1.6rem;
+            margin-top: 0.5rem;
+            line-height: 1.4;
+            font-weight: 300;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+        }
+
+        .hero .content .cta {
+            margin-top: 1rem;
+            display: inline-block;
+            padding: 1rem 3rem;
+            font-size: 1.4rem;
+            color: white;
+            background-color: var(--primary);
+            border-radius: 0.5rem;
+            box-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+        }
+
+        /* About Section */
+        .about,
+        .menu,
+        .location {
+            padding: 8rem 7% 1.4rem;
+        }
+
+        .about h2,
+        .menu h2,
+        .location h2 {
+            text-align: center;
+            font-size: 2.6rem;
+            margin-bottom: 3rem;
+        }
+
+
+        .about h2 span,
+        .menu h2 span,
+        .location h2 span {
+            color: var(--primary);
+        }
+
+        .about .row {
+            display: flex;
+        }
+
+        .about .row .about-img {
+            flex: 1 1 45rem;
+        }
+
+        .about .row .about-img img {
+            width: 100%;
+        }
+
+        .about .row .content {
+            flex: 1 1 35rem;
+            padding: 0 1rem;
+        }
+
+        .about .row .content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .about .row .content p {
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Location Section */
+        .location .row {
+            display: flex;
+            margin-top: 2rem;
+            background-color: #e9b384;
+        }
+
+        .location .row .map {
+            border: 1px solid var(--primary);
+            flex: 1 1 45rem;
+            width: 100%;
+            height: 20rem;
+            object-fit: cover;
+        }
+
+        footer {
+            background-color: var(--primary);
+            text-align: center;
+            padding: 1rem 0 3rem;
+            margin-top: 3rem;
+        }
+
+        footer .links {
+            margin-bottom: 1.6rem;
+        }
+
+        footer .links a {
+            color: white;
+            padding: 0.7rem 1rem;
+        }
+
+        footer .credit {
+            font-size: 0.8rem;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">Freiyn</a>
+
+        <div class="navbar-center">
+            <div class="navbar-nav">
+                <a href="/">Home</a>
+                <a href="/product">Products</a>
+                <a href="/product/sell">Sell</a>
+            </div>
+        </div>
+
+        <% if (userId) { %>
+            <a style="color: white; font-size: 1.2rem;" href="/logout">Logout</a>
+            <% } else { %>
+                <a style="color: white; font-size: 1.2rem;" href="/login">Login</a>
+                <% } %>
+
+    </nav>
+
+    <% if (error) { %>
+        <p style="color: red;">
+            <%= error %>
+        </p>
+        <% } %>
+
+            <section class="hero" id="home">
+                <main class="content">
+                    <h1>Your Perfect Tech Companion!</h1>
+                    <p>
+                        Gadget terbaik dari Freiyn adalah milik Anda—
+                        Siap menemani setiap aktivitas, memberikan kemudahan, kecepatan, dan gaya hidup yang lebih
+                        cerdas.
+                    </p>
+                    <a href="/product" class="cta">See Products</a>
+                    <a href="/product/sell" class="cta">Sell Your Products</a>
+                </main>
+            </section>
+
+
+            <section id="about" class="about">
+                <h2><span>Tentang</span> Kami</h2>
+
+                <div class="row">
+                    <div class="about-img">
+                        <img src="https://belvg.com/wp-content/uploads/2024/04/img_3.webp" alt="Tentang Kami" />
+                    </div>
+                    <div class="content">
+                        <h3>Kenapa Memilih Produk dari Freiyn?</h3>
+                        <p>
+                            Inovatif. Terpercaya. Berkualitas.
+                            Kami di Freiyn berkomitmen menghadirkan gadget terbaik yang telah dikurasi secara
+                            teliti—mulai dari
+                            smartphone, laptop, earphone, hingga smartwatch—semuanya untuk mendukung produktivitas dan
+                            gaya
+                            hidup Anda.
+                        </p>
+                        <br>
+                        <p>
+                            Dengan beragam pilihan dan teknologi terbaru, setiap produk yang kami hadirkan dirancang
+                            untuk
+                            memberikan
+                            kemudahan, efisiensi, dan kepuasan maksimal dalam setiap penggunaan.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="location" class="location">
+                <h2><span>Lokasi</span> Kami</h2>
+                <p style="text-align: center;">
+                    Terima kasih atas dukungan Anda dan kesempatan untuk melayani Anda
+                    dengan produk kami.
+                </p>
+                <div class="row">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3172.3321782432827!2d-122.008972!3d37.33464379999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb596e9e188fd%3A0x3b0d8391510688f0!2sApple%20Park!5e0!3m2!1sid!2sid!4v1751461648024!5m2!1sid!2sid"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+            </section>
+
+            <footer>
+                <div class="links">
+                    <a href="#home">Home</a>
+                    <a href="#about">Tentang Kami</a>
+                    <a href="#contact">Lokasi</a>
+                </div>
+
+                <div class="credit">
+                    <p>Created by Freiyn. | &copy; 2025.</p>
+                </div>
+            </footer>
+
+
+</body>
+
+</html>

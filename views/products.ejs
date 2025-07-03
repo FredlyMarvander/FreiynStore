@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+
+<body>
+    <%- include('./partial/_navbar.ejs') %>
+        <center>
+            <h1>List of Products</h1>
+            <% if (productDelete) { %>
+                <p style="color: red;">
+                    <%= productDelete %> Removed
+                </p>
+                <% } %>
+                    <form method="get" action="/product">
+                        <input type="text" name="search">
+                        <button>Search</button>
+                    </form>
+                    <br>
+                    <a href="/product?type=Handphone">Handphone</a>
+                    <a href="/product?type=Laptop">Laptop</a>
+                    <a href="/product?type=Powerbank">Powerbank</a>
+                    <a href="/product?type=Earphone">Earphone</a>
+                    <a href="/product?type=Smartwatch">Smartwatch</a>
+                    <table border="1">
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+
+                        <% data.forEach(el=> { %>
+                            <tr>
+                                <td><img src="<%= el.image %>" alt="image"></td>
+                                <td>
+                                    <%= el.name %>
+                                </td>
+                                <td>
+                                    <%= el.rupiah %>
+                                </td>
+                                <td>
+                                    <%= el.stock %>
+                                </td>
+
+                                <td>
+                                    <% if (el.User) { %>
+                                        <%= el.User.email %>
+                                            <% } %>
+                                </td>
+                                <td>
+                                    <form style="display: inline;" method="get" action="/product/buy/<%= el.id %>">
+                                        <button>Buy</button>
+                                    </form>
+                                    <form style="display: inline;" method="get" action="/product/detail/<%= el.id %>">
+                                        <button>Detail</button>
+                                    </form>
+                                    <form style="display: inline;" method="get" action="/product/update/<%= el.id %>">
+                                        <button>Update</button>
+                                    </form>
+                                    <form style="display: inline;" method="get" action="/product/delete/<%= el.id %>">
+                                        <button>Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </table>
+        </center>
+
+</body>
+
+</html>

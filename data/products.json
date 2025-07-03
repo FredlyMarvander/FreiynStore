@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Samsung Galaxy S25",
+        "price": 14999000,
+        "type": "Handphone",
+        "stock": 20,
+        "image": "https://i.imgur.com/Z2xjtkb.png",
+        "UserId": 1
+    },
+    {
+        "name": "iPhone 15 Pro",
+        "price": 19999000,
+        "type": "Handphone",
+        "stock": 15,
+        "image": "https://i.imgur.com/OGKdwvl.png",
+        "UserId": 1
+    },
+    {
+        "name": "Xiaomi 14 Ultra",
+        "price": 12999000,
+        "type": "Handphone",
+        "stock": 25,
+        "image": "https://i.imgur.com/y0thESB.png",
+        "UserId": 1
+    },
+    {
+        "name": "MacBook Air M3",
+        "price": 18999000,
+        "type": "Laptop",
+        "stock": 10,
+        "image": "https://i.imgur.com/MlIOauT.png",
+        "UserId": 1
+    },
+    {
+        "name": "ASUS ROG Zephyrus G16",
+        "price": 24999000,
+        "type": "Laptop",
+        "stock": 12,
+        "image": "https://i.imgur.com/rCdRrsq.png",
+        "UserId": 1
+    },
+    {
+        "name": "Lenovo ThinkPad X1 Carbon",
+        "price": 21999000,
+        "type": "Laptop",
+        "stock": 8,
+        "image": "https://i.imgur.com/KIlH7vY.png",
+        "UserId": 1
+    },
+    {
+        "name": "Anker PowerCore 20000",
+        "price": 750000,
+        "type": "PowerBank",
+        "stock": 30,
+        "image": "https://i.imgur.com/2d5PMCP.png",
+        "UserId": 1
+    },
+    {
+        "name": "Xiaomi Mi Power Bank 3",
+        "price": 450000,
+        "type": "PowerBank",
+        "stock": 35,
+        "image": "https://i.imgur.com/UAbFlO4.png",
+        "UserId": 1
+    },
+    {
+        "name": "Baseus 30000mAh Fast Charge",
+        "price": 690000,
+        "type": "PowerBank",
+        "stock": 28,
+        "image": "https://i.imgur.com/ok4ro1d.png",
+        "UserId": 1
+    },
+    {
+        "name": "Sony WF-1000XM5",
+        "price": 3499000,
+        "type": "Earphone",
+        "stock": 22,
+        "image": "https://i.imgur.com/YL9dFGH.png",
+        "UserId": 1
+    },
+    {
+        "name": "Apple AirPods Pro 2",
+        "price": 3999000,
+        "type": "Earphone",
+        "stock": 18,
+        "image": "https://i.imgur.com/f2tjo8U.png",
+        "UserId": 1
+    },
+    {
+        "name": "Samsung Galaxy Buds2 Pro",
+        "price": 2999000,
+        "type": "Earphone",
+        "stock": 20,
+        "image": "https://i.imgur.com/mHSAWrp.png",
+        "UserId": 1
+    },
+    {
+        "name": "Apple Watch Series 9",
+        "price": 7999000,
+        "type": "SmartWatch",
+        "stock": 16,
+        "image": "https://i.imgur.com/GLaj9rp.png",
+        "UserId": 1
+    },
+    {
+        "name": "Samsung Galaxy Watch6 Classic",
+        "price": 5999000,
+        "type": "SmartWatch",
+        "stock": 19,
+        "image": "https://i.imgur.com/2nW2RfK.png",
+        "UserId": 1
+    },
+    {
+        "name": "Garmin Forerunner 255",
+        "price": 5999000,
+        "type": "SmartWatch",
+        "stock": 14,
+        "image": "https://i.imgur.com/3kFevZj.png",
+        "UserId": 1
+    }
+]

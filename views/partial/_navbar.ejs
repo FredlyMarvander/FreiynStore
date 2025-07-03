@@ -1,0 +1,82 @@
+<style>
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.4rem 7%;
+        border-bottom: 1px solid #212121;
+    }
+
+    .navbar-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .navbar-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .navbar .navbar-logo {
+        font-family: "Parifico", cursive;
+        font-style: italic;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #212121;
+        text-decoration: none;
+    }
+
+    .navbar .navbar-logo span {
+        color: var(--primary);
+    }
+
+    .navbar .navbar-nav a {
+        text-align: center;
+        color: #212121;
+        display: inline-block;
+        font-size: 1.3rem;
+        margin: 0 1rem;
+        text-decoration: none;
+    }
+
+    .navbar .navbar-nav a:hover {
+        color: #212121;
+    }
+
+    .navbar .navbar-nav a::after {
+        content: "";
+        display: block;
+        padding-bottom: 0.5rem;
+        border-bottom: 0.1rem solid #212121;
+        transform: scaleX(0);
+        transition: 0.2s linear;
+    }
+
+    .navbar .navbar-nav a:hover::after {
+        transform: scaleX(0.5);
+    }
+
+    .navbar .navbar-extra a {
+        color: #212121;
+        margin: 0 0.5rem;
+    }
+
+    .navbar .navbar-extra a:hover {
+        color: #212121;
+    }
+</style>
+
+<nav class="navbar">
+    <a href="#" class="navbar-logo">Freiyn</a>
+
+    <div class="navbar-center">
+        <div class="navbar-nav">
+            <a href="/">Home</a>
+            <a href="/product">Products</a>
+            <a href="/product/sell">Sell</a>
+        </div>
+    </div>
+</nav>

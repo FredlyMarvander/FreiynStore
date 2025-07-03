@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item for sale</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f6f7fb;
+            color: #222;
+            margin: 0;
+        }
+
+        .center-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .sell-form {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 6px 32px 0 #21245a16;
+            padding: 34px 28px 26px;
+            width: 370px;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin: 20px auto;
+        }
+
+        .sell-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+            text-align: left;
+            color: #222;
+            border-bottom: 1.5px solid #e3e6f1;
+            padding-bottom: 10px;
+        }
+
+        .sell-form label {
+            font-size: 1.07em;
+            margin-bottom: 6px;
+            color: #232323;
+            margin-top: 8px;
+        }
+
+        .sell-form input,
+        .sell-form select {
+            width: 100%;
+            padding: 16px;
+            min-height: 56px;
+            border-radius: 11px;
+            background: #f6f7fb;
+            color: #232323;
+            font-size: 1em;
+            border: 1.5px solid #e3e6f1;
+            margin-bottom: 6px;
+            outline: none;
+            transition: border 0.13s, background 0.13s;
+        }
+
+        .sell-form input::placeholder {
+            color: #999;
+        }
+
+        .sell-form input:focus,
+        .sell-form select:focus {
+            border: 1.7px solid #3A86FF;
+            background: #f2f5fd;
+        }
+
+        .submit-btn {
+            background: #3A86FF;
+            color: #fff;
+            font-size: 1.1em;
+            font-weight: 600;
+            border: none;
+            border-radius: 11px;
+            padding: 16px;
+            margin-top: 12px;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.96;
+            transition: background 0.13s, opacity 0.13s;
+        }
+
+        .submit-btn:active {
+            opacity: 1;
+            background: #2c5fb8;
+        }
+
+        .error-message {
+            color: #ff5252;
+            margin-bottom: 10px;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .sell-form {
+                padding: 20px 16px;
+            }
+
+            .sell-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('partial/_navbar') %>
+        <div class="center-container">
+            <form class="sell-form" method="POST" action="/product/sell">
+                <div class="sell-title">Item for sale</div>
+                <% if (errors) { %>
+                    <div class="error-message">
+                        <% if (Array.isArray(errors)) { errors.forEach(e=> { %>
+                            <div>
+                                <%= e %>
+                            </div>
+                            <% }) } else { %>
+                                <div>
+                                    <%= errors %>
+                                </div>
+                                <% } %>
+                    </div>
+                    <% } %>
+
+                        <label for="name">Title</label>
+                        <input type="text" name="name" id="name" placeholder="Product name">
+
+                        <label for="price">Price</label>
+                        <input type="number" name="price" id="price" placeholder="e.g. 2.000.000">
+
+                        <label for="type">Category</label>
+                        <% let type=["Handphone","Laptop","PowerBank","Earphone","Smartwatch"] %>
+                            <select name="type" id="type">
+                                <option value="" disabled selected>--SELECT--</option>
+                                <% type.forEach(el=> { %>
+                                    <option value="<%= el %>">
+                                        <%= el %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+
+
+                            <label for="stock">Stock</label>
+                            <input type="number" name="stock" id="stock" placeholder="Stock">
+
+                            <label for="image">Image URL</label>
+                            <input type="text" name="image" id="image" placeholder="https://...">
+
+
+                            <button class="submit-btn" type="submit">Sell Your Item</button>
+            </form>
+        </div>
+
+</body>
+
+</html>

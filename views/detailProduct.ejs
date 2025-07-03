@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@100;300;400;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #212121;
+            --bg: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: var(--bg);
+            color: #2D3748;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.4rem 7%;
+            border-bottom: 1px solid var(--primary);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: white;
+        }
+
+        .navbar-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar .navbar-logo {
+            font-family: "Pacifico", cursive;
+            font-style: italic;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .navbar .navbar-logo span {
+            color: var(--primary);
+        }
+
+        .navbar .navbar-nav a {
+            text-align: center;
+            color: white;
+            display: inline-block;
+            font-size: 1.3rem;
+            margin: 0 1rem;
+        }
+
+        .navbar .navbar-nav a:hover {
+            color: var(--primary);
+        }
+
+        .navbar .navbar-nav a::after {
+            content: "";
+            display: block;
+            padding-bottom: 0.5rem;
+            border-bottom: 0.1rem solid var(--primary);
+            transform: scaleX(0);
+            transition: 0.2s linear;
+        }
+
+        .navbar .navbar-nav a:hover::after {
+            transform: scaleX(0.5);
+        }
+
+        .detail-container {
+            border: 1px solid #ccc;
+            margin: 100px 20px 20px;
+            padding: 20px;
+            background: white;
+        }
+
+        .detail-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .detail-image-box {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9f9f9;
+        }
+
+        .detail-image-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .detail-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 1.1rem;
+        }
+
+        .detail-info .row {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .detail-info .row strong {
+            width: 120px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .detail-info ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">Freiyn</a>
+        <div class="navbar-center">
+            <div class="navbar-nav">
+                <a href="/">Home</a>
+                <a href="/product">Products</a>
+                <a href="/product/sell">Sell</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="detail-container">
+        <div class="detail-content">
+            <!-- Product Photo -->
+            <div class="detail-image-box">
+                <% if (product.image) { %>
+                    <img src="<%= product.image %>" alt="<%= product.name %>">
+                    <% } else { %>
+                        <span>Foto Product</span>
+                        <% } %>
+            </div>
+
+            <!-- Product Details -->
+            <div class="detail-info">
+                <div class="row"><strong>Name:</strong><span>
+                        <%= product.name %>
+                    </span></div>
+                <div class="row"><strong>Price:</strong><span>Rp <%= product.price.toLocaleString('id-ID') %></span>
+                </div>
+                <div class="row"><strong>Type:</strong><span>
+                        <%= product.type %>
+                    </span></div>
+                <div class="row"><strong>Serial Code:</strong><span>
+                        <%= product.Code ? product.Code.serialCode : '-' %>
+                    </span></div>
+                <div class="row"><strong>Features:</strong><span>
+                        <% if (product.Features && product.Features.length) { %>
+                            <ul>
+                                <% product.Features.forEach(f=> { %>
+                                    <li>
+                                        <%= f.name %> — <%= f.description %>
+                                    </li>
+                                    <% }) %>
+                            </ul>
+                            <% } else { %>
+                                -
+                                <% } %>
+                    </span></div>
+                <div class="row"><strong>Description:</strong><span>
+                        <%= product.description || '-' %>
+                    </span></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
