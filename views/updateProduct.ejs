@@ -97,14 +97,18 @@
       <div class="container" style="margin-top: 100px;">
         <h1>Edit Product</h1>
 
-        <% if (typeof errors !=='undefined' && errors.length) { %>
-          <ul class="errors">
-            <% errors.forEach(err=> { %>
-              <li>
-                <%= err %>
-              </li>
-              <% }) %>
-          </ul>
+        <% if (errors) { %>
+          <div class="error-message">
+            <% if (Array.isArray(errors)) { errors.forEach(e=> { %>
+              <div style="color: red;">
+                <%= e %>
+              </div>
+              <% }) } else { %>
+                <div style="color: red;">
+                  <%= errors %>
+                </div>
+                <% } %>
+          </div>
           <% } %>
 
             <form action="/product/update/<%= product.id %>" method="POST">
