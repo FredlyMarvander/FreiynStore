@@ -181,17 +181,18 @@
                                 <ul>
                                     <% product.Features.forEach(f=> { %>
                                         <li>
-                                            <%= f.name %> — <%= f.description %>
+                                            <%= f.name %>
                                         </li>
+                                        <div class="row"><strong>Description:</strong><span>
+                                                <%= f.description %>
+                                            </span></div>
                                         <% }) %>
                                 </ul>
                                 <% } else { %>
                                     -
                                     <% } %>
                         </span></div>
-                    <div class="row"><strong>Description:</strong><span>
-                            <%= product.description || '-' %>
-                        </span></div>
+
                 </div>
             </div>
         </div>
