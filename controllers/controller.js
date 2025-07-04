@@ -279,8 +279,9 @@ class Controller {
     static async updateProductPage(req, res) {
         try {
             const { id } = req.params;
+            const { errors } = req.query
             let product = await Product.findByPk(id);
-            res.render('updateProduct', { product });
+            res.render('updateProduct', { product, errors });
         } catch (error) {
             res.send(error);
         }
@@ -301,8 +302,9 @@ class Controller {
 
         } catch (error) {
             if (error.name === 'SequelizeValidationError') {
+                const { id } = req.params;
                 const errors = error.errors.map(e => e.message);
-                return res.render('updateProduct', { product: req.body, errors });
+                res.redirect(`/product/update/${id}?errors=` + errors)
             } else {
                 console.log(error);
 
