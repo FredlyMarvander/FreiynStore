@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   ProductFeatures.init({
-    productId: DataTypes.INTEGER,
+    ProductId: DataTypes.INTEGER,
     FeatureId: DataTypes.INTEGER
   }, {
     sequelize,

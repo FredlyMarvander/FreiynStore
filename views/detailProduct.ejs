@@ -150,60 +150,52 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <a href="#" class="navbar-logo">Freiyn</a>
-        <div class="navbar-center">
-            <div class="navbar-nav">
-                <a href="/">Home</a>
-                <a href="/product">Products</a>
-                <a href="/product/sell">Sell</a>
-            </div>
-        </div>
-    </nav>
+    <%- include('./partial/_navbar') %>
 
-    <div class="detail-container">
-        <div class="detail-content">
-            <!-- Product Photo -->
-            <div class="detail-image-box">
-                <% if (product.image) { %>
-                    <img src="<%= product.image %>" alt="<%= product.name %>">
-                    <% } else { %>
-                        <span>Foto Product</span>
-                        <% } %>
-            </div>
-
-            <!-- Product Details -->
-            <div class="detail-info">
-                <div class="row"><strong>Name:</strong><span>
-                        <%= product.name %>
-                    </span></div>
-                <div class="row"><strong>Price:</strong><span>Rp <%= product.price.toLocaleString('id-ID') %></span>
+        <div class="detail-container">
+            <div class="detail-content">
+                <!-- Product Photo -->
+                <div class="detail-image-box">
+                    <% if (product.image) { %>
+                        <img src="<%= product.image %>" alt="<%= product.name %>">
+                        <% } else { %>
+                            <span>Foto Product</span>
+                            <% } %>
                 </div>
-                <div class="row"><strong>Type:</strong><span>
-                        <%= product.type %>
-                    </span></div>
-                <div class="row"><strong>Serial Code:</strong><span>
-                        <%= product.Code ? product.Code.serialCode : '-' %>
-                    </span></div>
-                <div class="row"><strong>Features:</strong><span>
-                        <% if (product.Features && product.Features.length) { %>
-                            <ul>
-                                <% product.Features.forEach(f=> { %>
-                                    <li>
-                                        <%= f.name %> — <%= f.description %>
-                                    </li>
-                                    <% }) %>
-                            </ul>
-                            <% } else { %>
-                                -
-                                <% } %>
-                    </span></div>
-                <div class="row"><strong>Description:</strong><span>
-                        <%= product.description || '-' %>
-                    </span></div>
+
+                <!-- Product Details -->
+                <div class="detail-info">
+                    <div class="row"><strong>Name:</strong><span>
+                            <%= product.name %>
+                        </span></div>
+                    <div class="row"><strong>Price:</strong><span>Rp <%= product.price.toLocaleString('id-ID') %></span>
+                    </div>
+                    <div class="row"><strong>Type:</strong><span>
+                            <%= product.type %>
+                        </span></div>
+                    <div class="row"><strong>Serial Code:</strong><span>
+                            <%= product.Code ? product.Code.serialCode : '-' %>
+                        </span></div>
+                    <div class="row"><strong>Features:</strong><span>
+                            <% if (product.Features && product.Features.length) { %>
+                                <ul>
+                                    <% product.Features.forEach(f=> { %>
+                                        <li>
+                                            <%= f.name %>
+                                        </li>
+                                        <div class="row"><strong>Description:</strong><span>
+                                                <%= f.description %>
+                                            </span></div>
+                                        <% }) %>
+                                </ul>
+                                <% } else { %>
+                                    -
+                                    <% } %>
+                        </span></div>
+
+                </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>
